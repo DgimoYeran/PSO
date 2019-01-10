@@ -3,11 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 目标函数定义
+
 def ras(x):
-    # y = 20 + x[0]**2 + x[1]**2 - 10*(np.cos(2*np.pi*x[0])+np.cos(2*np.pi*x[1]))
-    y=1+x[0]*np.sin(4*np.pi*x[0])-x[1]*np.sin(4*np.pi*x[1]+np.pi)
+    #y = 20 + x[0]**2 + x[1]**2 - 10*(np.cos(2*np.pi*x[0])+np.cos(2*np.pi*x[1]))
+    #y=-1-x[0]*np.sin(4*np.pi*x[0])+x[1]*np.sin(4*np.pi*x[1]+np.pi)
+    y = (3.0 / (0.05 + x[0] ** 2 + x[1] ** 2)) ** 2 + (x[0] ** 2 + x[1] ** 2) ** 2
     #y=20+x**2-10*np.sin(2*np.pi*x[0])+x[1]**2-10*np.cos(2*np.pi*x[1])
-    return -y
+    return -y#如果求最大值返回-y，求最小值将-y改成y
 
 # 参数初始化
 w = 0.5
@@ -53,11 +55,11 @@ while t < maxgen:
     pop[pop < popmin] = popmin
 
 
-    # 自适应变异
-    p = np.random.random()             # 随机生成一个0~1内的数
-    if p > 0.8:                          # 如果这个数落在变异概率区间内，则进行变异处理
-        k = np.random.randint(0,2)     # 在[0,2)之间随机选一个整数
-        pop[:,k] = np.random.random()  # 在选定的位置进行变异
+    # # 自适应变异
+    # p = np.random.random()             # 随机生成一个0~1内的数
+    # if p > 0.8:                          # 如果这个数落在变异概率区间内，则进行变异处理
+    #     k = np.random.randint(0,2)     # 在[0,2)之间随机选一个整数
+    #     pop[:,k] = np.random.random()  # 在选定的位置进行变异
 
 
     # 计算适应度值
